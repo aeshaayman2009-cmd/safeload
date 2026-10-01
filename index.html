@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart OverLoad | Smart Protection</title>
+
+    <link rel="stylesheet" href="frontend/css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="brand">
+
+            <div class="logo">
+                <img src="images/safeload.png" alt="SafeLoad Logo">
+            </div>
+
+            <div class="brand-name">
+                Smart<span>OverLoad</span>
+            </div>
+
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="#dashboard">Dashboard</a>
+            <a href="#monitoring">Monitoring</a>
+            <a href="#device">Device</a>
+            <a href="#alerts">Alerts</a>
+            <a href="#history">History</a>
+            <a href="#ai">AI Prediction</a>
+
+        </nav>
+
+
+        <button class="theme-btn" id="themeBtn">
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="content">
+
+
+        <!-- DASHBOARD -->
+
+        <section class="section" id="dashboard">
+
+            <div class="section-header">
+
+                <h1>Smart Load Dashboard</h1>
+
+                <p>
+                    Monitor your electrical load and stay protected.
+                </p>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span>Current Load</span>
+
+                        <div class="card-icon">
+                            ⚡
+                        </div>
+
+                    </div>
+
+                    <div class="card-value" id="current">
+                        -- A
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span>Maximum Limit</span>
+
+                        <div class="card-icon">
+                            🔋
+                        </div>
+
+                    </div>
+
+                    <div class="card-value" id="maximum">
+                        -- A
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span>Temperature</span>
+
+                        <div class="card-icon">
+                            🌡️
+                        </div>
+
+                    </div>
+
+                    <div class="card-value" id="temperature">
+                        -- °C
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span>Load Percentage</span>
+
+                        <div class="card-icon">
+                            📈
+                        </div>
+
+                    </div>
+
+                    <div class="card-value" id="load">
+                        -- %
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-box">
+
+                <div>
+
+                    <h3>Device Status</h3>
+
+                    <p>
+                        Current protection status
+                    </p>
+
+                </div>
+
+                <span class="status-badge" id="status">
+                    Loading...
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- MONITORING -->
+
+        <section class="section" id="monitoring">
+
+            <div class="section-header">
+
+                <h1>Monitoring</h1>
+
+                <p>
+                    Track electrical load over time.
+                </p>
+
+            </div>
+
+
+            <div class="monitor-card">
+
+                <h3>Load Monitoring</h3>
+
+                <canvas id="loadChart"></canvas>
+
+            </div>
+
+        </section>
+
+        <!-- ================= HISTORY ================= -->
+
+<section class="section" id="history">
+
+    <div class="section-header">
+
+        <h1>History</h1>
+
+        <p>
+            View previous electrical load readings.
+        </p>
+
+    </div>
+
+    <div class="history-stats">
+
+    <div class="history-stat">
+        <span>Average Current</span>
+        <strong id="avgCurrent">-- A</strong>
+    </div>
+
+    <div class="history-stat">
+        <span>Maximum Current</span>
+        <strong id="maxCurrent">-- A</strong>
+    </div>
+
+    <div class="history-stat">
+        <span>Warnings</span>
+        <strong id="warningCount">--</strong>
+    </div>
+
+    <div class="history-stat">
+        <span>Critical</span>
+        <strong id="criticalCount">--</strong>
+    </div>
+
+</div>
+
+    <div class="history-box">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Current</th>
+                    <th>Temperature</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+
+            <tbody id="historyTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+        <!-- DEVICE -->
+
+        <section class="section" id="device">
+
+            <div class="section-header">
+
+                <h1>Device</h1>
+
+                <p>
+                    Manage your SafeLoad device.
+                </p>
+
+            </div>
+
+
+            <div class="device-box">
+
+
+                <div class="device-item">
+
+                    <h3>Device ID</h3>
+
+                    <p id="deviceId">
+                        Loading...
+                    </p>
+                    <button class="add-device-btn" id="addDeviceBtn">
+                        + Add Device
+                    </button>
+                </div>
+
+
+                <div class="device-item">
+
+                    <h3>Power Control</h3>
+
+                    <p>
+                        Device connection status
+                    </p>
+
+                    <label class="switch">
+
+                        <input type="checkbox" id="powerToggle" checked>
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                    <p id="powerStatus">Device is ON</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ALERTS -->
+
+        <section class="section" id="alerts">
+
+            <div class="section-header">
+
+                <h1>Alerts</h1>
+
+                <p>
+                    Recent system warnings.
+                </p>
+
+            </div>
+
+            <button id="notificationBtn" class="notification-btn">
+                🔔 Enable Notifications
+            </button>
+
+            <div id="alertsContainer"></div>
+
+        </section>
+
+
+
+        <!-- AI -->
+
+        <section class="section" id="ai">
+
+            <div class="section-header">
+
+                <h1>AI Prediction</h1>
+
+                <p>
+                    Predict possible high-load conditions.
+                </p>
+
+            </div>
+
+
+            <div class="ai-box">
+
+                <h2>
+                    🤖 Smart Prediction
+                </h2>
+
+                <p>
+                    AI analyzes current and temperature
+                    to predict possible high load.
+                </p>
+
+
+                <div class="ai-result" id="prediction">
+                    Loading...
+                </div>
+
+            </div>
+
+        </section>
+
+    <!-- ADD DEVICE MODAL -->
+
+<div class="device-modal" id="deviceModal">
+
+    <div class="modal-box">
+
+        <h2>Add New Device</h2>
+
+        <p>Enter your SafeLoad Device ID</p>
+
+        <input
+            type="text"
+            id="deviceInput"
+            placeholder="Example: SL-001"
+        >
+
+        <div class="modal-buttons">
+
+            <button id="connectDeviceBtn">
+                Connect Device
+            </button>
+
+            <button id="closeDeviceBtn">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>        
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            <img src="images/safeload.png" alt="SafeLoad Logo">
+
+        </div>
+
+        <p>
+            © 2026 SafeLoad — Smart Overload Protection System
+        </p>
+
+    </footer>
+
+
+
+    <!-- BACK TO TOP -->
+
+    <button id="topBtn">
+        ↑
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="frontend/js/main.js"></script>
+
+</body>
+
+</html>
