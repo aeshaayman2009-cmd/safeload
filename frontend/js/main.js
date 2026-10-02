@@ -96,19 +96,19 @@ let selectedDeviceId =
     localStorage.getItem("selectedDeviceId");
 
 const dataUrl = selectedDeviceId
-    ? `http://127.0.0.1:5000/api/data?device_id=${encodeURIComponent(selectedDeviceId)}`
-    : "http://127.0.0.1:5000/api/data";
+    ? `https://aeshaayman.pythonanywhere.com/api/data?device_id=${encodeURIComponent(selectedDeviceId)}`
+    : "https://aeshaayman.pythonanywhere.com/api/data";
 
 const latestUrl = selectedDeviceId
-    ? `http://127.0.0.1:5000/api/latest?device_id=${encodeURIComponent(selectedDeviceId)}`
-    : "http://127.0.0.1:5000/api/latest";
+    ? `https://aeshaayman.pythonanywhere.com/api/latest?device_id=${encodeURIComponent(selectedDeviceId)}`
+    : "https://aeshaayman.pythonanywhere.com/api/latest";
 
 
 // ================= BACKEND STATUS =================
 
 function loadDeviceData(deviceId) {
 
-    fetch(`http://127.0.0.1:5000/api/device/${deviceId}`)
+    fetch(`https://aeshaayman.pythonanywhere.com/api/device/${deviceId}`)
 
         .then(response => response.json())
 
@@ -248,7 +248,7 @@ fetch(latestUrl)
     .then(data => {
 
         fetch(
-            `http://127.0.0.1:5000/api/predict?current=${data.Current}&temperature=${data.Temperature}`
+            `https://aeshaayman.pythonanywhere.com/api/predict?current=${data.Current}&temperature=${data.Temperature}`
         )
             .then(response => response.json())
             .then(result => {
@@ -295,7 +295,7 @@ connectDeviceBtn.addEventListener("click", () => {
         return;
     }
 
-    fetch(`http://127.0.0.1:5000/api/device/${deviceId}`)
+    fetch(`https://aeshaayman.pythonanywhere.com/api/device/${deviceId}`)
 
         .then(response => response.json())
 
@@ -368,7 +368,7 @@ powerToggle.addEventListener("change", async () => {
 
     try {
 
-        const response = await fetch("http://127.0.0.1:5000/api/power", {
+        const response = await fetch("https://aeshaayman.pythonanywhere.com/api/power", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
